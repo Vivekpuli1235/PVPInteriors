@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000/api';
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://your-backend.onrender.com/api';
 
 const Home = () => {
   const [navOpen, setNavOpen] = useState(false);
   const [reviews, setReviews] = useState([]);
-  
+
   // Form states
   const [reviewName, setReviewName] = useState('');
   const [reviewEmail, setReviewEmail] = useState('');
   const [reviewMessage, setReviewMessage] = useState('');
-  
+
   const [contactName, setContactName] = useState('');
   const [contactEmail, setContactEmail] = useState('');
   const [contactMessage, setContactMessage] = useState('');
@@ -71,8 +71,8 @@ const Home = () => {
       <header>
         <nav>
           <div className="logo">
-            <img src="https://res.cloudinary.com/dxr9wzza1/image/upload/v1758532338/Vinay_Puli-photoaidcom-cropped_ekhlht.png" 
-                 height="40px" width="40px" alt="PVP Interiors Logo" />
+            <img src="https://res.cloudinary.com/dxr9wzza1/image/upload/v1758532338/Vinay_Puli-photoaidcom-cropped_ekhlht.png"
+              height="40px" width="40px" alt="PVP Interiors Logo" />
             PVP interiors
           </div>
 
@@ -119,7 +119,7 @@ const Home = () => {
             <button type="submit" className="btn primary">Submit</button>
           </form>
         </div>
-        
+
         <h2 style={{ color: 'var(--accent)', marginTop: '10px' }}>Client Reviews</h2>
         <div className="grid">
           {reviews.length > 0 ? (

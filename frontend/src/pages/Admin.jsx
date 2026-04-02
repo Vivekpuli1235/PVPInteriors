@@ -3,7 +3,7 @@ import axios from 'axios';
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from '../firebase';
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000/api';
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://pvpinteriors.onrender.com/api/admin';
 
 const Admin = () => {
   const [token, setToken] = useState(localStorage.getItem('adminToken') || '');
@@ -46,10 +46,10 @@ const Admin = () => {
   const fetchDashboardData = async () => {
     try {
       const config = { headers: { Authorization: `Bearer ${token}` } };
-      
+
       const revRes = await axios.get(`${API_BASE}/reviews`, config);
       setReviews(revRes.data);
-      
+
       const conRes = await axios.get(`${API_BASE}/contacts`, config);
       setContacts(conRes.data);
     } catch (err) {
@@ -68,21 +68,21 @@ const Admin = () => {
         <div className="admin-login-box">
           <h2 style={{ marginBottom: '20px', color: '#000' }}>Admin Login</h2>
           <form onSubmit={handleLogin}>
-            <input 
-              type="email" 
-              placeholder="Admin Email" 
-              className="admin-input" 
-              value={email} 
-              onChange={e => setEmail(e.target.value)} 
-              required 
+            <input
+              type="email"
+              placeholder="Admin Email"
+              className="admin-input"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required
             />
-            <input 
-              type="password" 
-              placeholder="Password" 
-              className="admin-input" 
-              value={password} 
-              onChange={e => setPassword(e.target.value)} 
-              required 
+            <input
+              type="password"
+              placeholder="Password"
+              className="admin-input"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              required
             />
             <button type="submit" className="admin-btn">Login</button>
           </form>
@@ -118,7 +118,7 @@ const Admin = () => {
               </tr>
             ))
           ) : (
-            <tr><td colSpan="4" style={{textAlign: 'center'}}>No reviews found</td></tr>
+            <tr><td colSpan="4" style={{ textAlign: 'center' }}>No reviews found</td></tr>
           )}
         </tbody>
       </table>
@@ -144,7 +144,7 @@ const Admin = () => {
               </tr>
             ))
           ) : (
-            <tr><td colSpan="4" style={{textAlign: 'center'}}>No contacts found</td></tr>
+            <tr><td colSpan="4" style={{ textAlign: 'center' }}>No contacts found</td></tr>
           )}
         </tbody>
       </table>
